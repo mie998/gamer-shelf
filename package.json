@@ -1,27 +1,73 @@
 {
-  "name": "with-chakra-ui-typescript",
-  "version": "1.0.0",
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "@chakra-ui/icons": "^1.0.5",
-    "@chakra-ui/react": "^1.4.2",
-    "@chakra-ui/theme-tools": "1.1.2",
-    "@emotion/react": "11.1.5",
-    "@emotion/styled": "11.1.5",
-    "framer-motion": "^4.0.3",
-    "next": "latest",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
-  },
-  "devDependencies": {
-    "@types/node": "^14.6.0",
-    "@types/react": "^17.0.3",
-    "@types/react-dom": "^17.0.3",
-    "typescript": "4.2.3"
-  },
-  "license": "MIT"
+    "name": "gamer-shelf",
+    "version": "1.0.0",
+    "scripts": {
+        "dev": "next",
+        "build": "next build",
+        "start": "next start",
+        "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'; stylelint 'src/**/*.{css,jsx,tsx}'; cd functions/ && eslint 'src/**/*.{js,ts}'",
+        "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'; stylelint --fix 'src/**/*.{css,jsx,tsx}'; cd functions/ && eslint --fix 'src/**/*.{js,ts}'",
+        "precommit": "lint-staged"
+    },
+    "dependencies": {
+        "@chakra-ui/icons": "^1.0.5",
+        "@chakra-ui/react": "^1.4.2",
+        "@chakra-ui/theme-tools": "1.1.2",
+        "@emotion/react": "11.1.5",
+        "@emotion/styled": "11.1.5",
+        "framer-motion": "^4.0.3",
+        "next": "latest",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+    },
+    "devDependencies": {
+        "@types/eslint-plugin-prettier": "^3.1.0",
+        "@types/node": "^14.6.0",
+        "@types/prettier": "^2.2.3",
+        "@types/react": "^17.0.3",
+        "@types/react-dom": "^17.0.3",
+        "@types/stylelint": "^9.10.1",
+        "@typescript-eslint/eslint-plugin": "^4.23.0",
+        "@typescript-eslint/parser": "^4.23.0",
+        "eslint-config-airbnb": "^18.2.1",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-import": "^2.23.2",
+        "eslint-plugin-jest": "^24.3.6",
+        "eslint-plugin-jsx-a11y": "^6.4.1",
+        "eslint-plugin-prefer-arrow": "^1.2.3",
+        "eslint-plugin-prettier": "^3.4.0",
+        "eslint-plugin-react": "^7.23.2",
+        "eslint-plugin-react-hooks": "^4.2.0",
+        "husky": "^6.0.0",
+        "lint-staged": "^11.0.0",
+        "prettier": "^2.3.0",
+        "prettier-stylelint": "^0.4.2",
+        "stylelint": "^13.13.1",
+        "stylelint-config-prettier": "^8.0.2",
+        "stylelint-config-standard": "^22.0.0",
+        "stylelint-config-styled-components": "^0.1.1",
+        "stylelint-order": "^4.1.0",
+        "stylelint-processor-styled-components": "^1.10.0",
+        "typescript": "4.2.3"
+    },
+    "license": "MIT",
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "src/**/*.{js,jsx,ts,tsx}": [
+            "eslint --fix",
+            "git add"
+        ],
+        "src/**/*.{css,jsx,tsx}": [
+            "stylelint --fix",
+            "git add"
+        ],
+        "functions/src/**/*.{js,ts}": [
+            "cd functions/ && eslint --fix",
+            "git add"
+        ]
+    }
 }
