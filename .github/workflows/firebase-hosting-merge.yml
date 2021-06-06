@@ -11,12 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: Borales/actions-yarn@v2.3.0
-        with: 
-          cmd: ci 
-      - uses: Borales/actions-yarn@v2.3.0
-        with: 
-          cmd: build
+      - name: ci
+        run: yarn ci
+      - name: build 
+        run: yarn build 
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
