@@ -9,8 +9,8 @@
         "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}'; stylelint 'src/**/*.{css,jsx,tsx}'; cd functions/ && eslint 'src/**/*.{js,ts}'",
         "lint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx}'; stylelint --fix 'src/**/*.{css,jsx,tsx}'; cd functions/ && eslint --fix 'src/**/*.{js,ts}'",
         "precommit": "lint-staged",
-        "preci": "rm -rf mode_modules",
-        "ci":  "yarn install --frozen-lockfile"
+        "preci": "rm -rf node_modules",
+        "ci": "yarn install --frozen-lockfile"
     },
     "dependencies": {
         "@chakra-ui/icons": "^1.0.5",
