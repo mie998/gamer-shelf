@@ -47,7 +47,7 @@ const Index = () => (
 
     <DarkModeSwitch />
     <Footer>
-      <Text>Next ❤️ Chakra</Text>
+      <Text>Next️ Chakra</Text>
     </Footer>
     <CTA />
   </Container>
