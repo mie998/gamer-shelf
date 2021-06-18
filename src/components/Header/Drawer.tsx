@@ -1,4 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useContext } from 'react';
+import { css } from '@emotion/react';
+import { gamerShelfThemeContext } from '../../contexts';
 import {
   Button,
   Drawer as ChakraDrawer,
@@ -10,23 +12,26 @@ import {
   DrawerCloseButton,
   useDisclosure,
 } from '@chakra-ui/react';
+import { HamburgerIcon } from '@chakra-ui/icons';
 
 export const Drawer = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = useRef();
-  const [placement, setPlacement] = useState('right');
+  const gamerShelfTheme = useContext(gamerShelfThemeContext);
+  const drawerButtonTheme = css({
+    fontSize: '1.8rem',
+    padding: '0 auto',
+    marginTop: '0.5rem',
+    marginRight: '2rem',
+    marginLeft: 'auto',
+    color: `${gamerShelfTheme.colors.steamWordColor}`,
+  });
 
   return (
     <>
-      <Button ref={btnRef} colorScheme="teal" onClick={onOpen}>
-        Open
+      <Button colorScheme="ghost" onClick={onOpen} css={drawerButtonTheme}>
+        <HamburgerIcon />
       </Button>
-      <ChakraDrawer
-        isOpen={isOpen}
-        placement="right"
-        onClose={onClose}
-        finalFocusRef={btnRef}
-      >
+      <ChakraDrawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />

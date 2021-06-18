@@ -2,7 +2,7 @@
 import firebase from 'firebase/app';
 
 import { createContext } from 'react';
-import theme from './theme';
+import { gamerShelfTheme } from './theme';
 
 type FirebaseContextValue = {
   auth: firebase.auth.Auth | null;
@@ -14,6 +14,4 @@ export const FirebaseContext = createContext<FirebaseContextValue>({
   db: null,
 });
 
-export const ThemeContext = createContext(
-  (null as unknown) as typeof theme,
-);
+export const gamerShelfThemeContext = createContext(gamerShelfTheme);

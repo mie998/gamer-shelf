@@ -1,20 +1,21 @@
 import { Flex, FlexProps, Text, Button } from '@chakra-ui/react';
-import { ThemeContext, css } from '@emotion/react';
+import { css } from '@emotion/react';
 import { useContext } from 'react';
+import { Drawer } from './Drawer';
+import { gamerShelfThemeContext } from '../../contexts';
 
 export const Header = () => {
-  const theme = useContext(ThemeContext);
-  const steamColorPalette = ['#171a21', '#1b2838', '#2a475e', '#66c0f4'];
-  const steamWordColor = '#c7d5e0';
+  const gamerShelfTheme = useContext(gamerShelfThemeContext);
+  const steam = gamerShelfTheme.colors.steamColorPalette;
   const headerContainer = css({
     width: '100%',
     height: '3.5rem',
     position: 'fixed',
-    background: `linear-gradient(${steamColorPalette[0]}, ${steamColorPalette[1]}, ${steamColorPalette[2]},${steamColorPalette[2]})`,
+    background: `linear-gradient(${steam.deepDarkBlue},${steam.darkBlue},${steam.blue},${steam.lightBlue})`,
   });
   const headerItem = css({
     backgroundColor: 'none',
-    color: `${steamWordColor}`,
+    color: `${gamerShelfTheme.colors.steamWordColor}`,
     marginLeft: '5rem',
     height: '100%',
     fontSize: '1.5rem',
@@ -26,13 +27,10 @@ export const Header = () => {
 
   return (
     <Flex as="header" css={headerContainer}>
-      <Button
-        css={headerItem}
-        _hover={{ bg: `${steamColorPalette[2]}` }}
-        variant="ghost"
-      >
+      <Button css={headerItem} _hover={{ bg: `${steam.blue}` }} variant="ghost">
         Gamer-shelf
       </Button>
+      <Drawer />
     </Flex>
   );
 };
