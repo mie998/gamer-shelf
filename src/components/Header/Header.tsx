@@ -1,5 +1,7 @@
 import { Flex, FlexProps, Text, Button } from '@chakra-ui/react';
 import { css } from '@emotion/react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useContext } from 'react';
 import { Drawer } from './Drawer';
 import { gamerShelfThemeContext } from '../../contexts';
@@ -27,9 +29,19 @@ export const Header = () => {
 
   return (
     <Flex as="header" css={headerContainer}>
-      <Button css={headerItem} _hover={{ bg: `${steam.blue}` }} variant="ghost">
-        Gamer-shelf
-      </Button>
+      <Link href="/">
+        <Button
+          css={headerItem}
+          _hover={{ bg: `${steam.blue}` }}
+          variant="ghost"
+        >
+          <Image
+            src="/images/gamershelf-logo-reshape.png"
+            height={60}
+            width={90}
+          ></Image>
+        </Button>
+      </Link>
       <Drawer />
     </Flex>
   );
